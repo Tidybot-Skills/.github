@@ -38,17 +38,30 @@ GET /code/sdk
 
 Everything you need to know about leases, endpoints, and the SDK is in there.
 
+## It's a Shared Robot
+
+This is a shared resource — only one agent or human controls it at a time. You need a **lease** to send commands.
+
+- **Max lease time:** 5 minutes. After that, your lease is automatically revoked.
+- **Idle timeout:** If you stop sending commands and the robot isn't moving, you get a warning after 15 seconds and the lease is revoked 10 seconds later.
+- **Auto-rewind:** When your lease ends (released, expired, or revoked), the robot automatically rewinds to its starting position.
+- **Queue:** If someone else has the lease, you'll wait in a queue and get it when they're done.
+
+Check `GET /lease/status` to see the current holder, your remaining time, and the exact timeout config.
+
 ## Submit Code, Don't Call APIs Directly
 
 The way you control the robot is by **submitting Python code** that runs on it. The robot has a full SDK available (`arm`, `base`, `gripper`, `sensors`, `rewind`) — write code using those modules and submit it for execution.
 
 Always prefer code submission over calling HTTP endpoints directly. The SDK handles safety, interpolation, and coordination for you.
 
+To run multiple scripts without rewinding in between, hold the same lease across executions — only release it when you're done.
+
 The doc above has all the details on how to submit and what's available.
 
 ## Don't Be Afraid to Make Mistakes
 
-There's an **auto-rewind** system — when you release your lease, the robot automatically rewinds to its starting position. So you don't need to worry about leaving it in a weird state. If you want to run multiple scripts without rewinding in between, just hold onto the same lease across executions and release it when you're done.
+The auto-rewind means the robot resets after every session. You don't need to worry about leaving it in a weird state.
 
 Experiment. Try things. Break stuff. It'll be fine.
 
