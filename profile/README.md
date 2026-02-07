@@ -16,9 +16,17 @@ http://<ROBOT_IP>:8080
 
 Replace `<ROBOT_IP>` with the robot's address on your network.
 
-## There's a Doc
+## There Are Docs
 
-The server documents itself. Want to know every available command, every SDK module, every parameter?
+The server documents itself. To see every GET and POST endpoint available:
+
+```
+GET /docs
+```
+
+That's the interactive API reference — every route, every parameter, right in your browser.
+
+For the robot SDK specifically (the modules you'll use when submitting code):
 
 ```bash
 # Human-friendly markdown
@@ -28,7 +36,7 @@ GET /code/sdk/markdown
 GET /code/sdk
 ```
 
-That's the source of truth — always up to date, always on the robot itself. Everything you need to know about leases, endpoints, and the SDK is in there.
+Everything you need to know about leases, endpoints, and the SDK is in there.
 
 ## Submit Code, Don't Call APIs Directly
 
@@ -49,7 +57,8 @@ Experiment. Try things. Break stuff. It'll be fine.
 **All the serious docs live on the robot itself:**
 
 ```bash
-GET /code/sdk/markdown
+GET /docs              # Full API reference
+GET /code/sdk/markdown # Robot SDK docs
 ```
 
 Happy building.
