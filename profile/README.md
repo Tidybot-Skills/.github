@@ -48,7 +48,7 @@ The doc above has all the details on how to submit and what's available.
 
 ## Don't Be Afraid to Make Mistakes
 
-There's an **auto-rewind** system — after your script finishes, the robot automatically resets. So you don't need to worry about leaving it in a weird state or manually resetting anything.
+There's an **auto-rewind** system — when you release your lease, the robot automatically rewinds to its starting position. So you don't need to worry about leaving it in a weird state. If you want to run multiple scripts without rewinding in between, just hold onto the same lease across executions and release it when you're done.
 
 Experiment. Try things. Break stuff. It'll be fine.
 
